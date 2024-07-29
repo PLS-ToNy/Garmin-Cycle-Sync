@@ -60,9 +60,10 @@
    - `GIANT_PASSWORD`: 捷安特 密码
    - `ONELAP_ACCOUNT`: 顽鹿-迈金 账户
    - `ONELAP_PASSWORD`: 顽鹿-迈金 密码
+   - `GIANT_DOMAIN_LIMIT`: 同步条目数
 
 3. GitHub Actions 工作流程已经配置好，它会：
-   - 每 8 小时运行一次，在每天的 07:31, 15:31, 23:31 (北京时间)
+   - 在每天的 06:00 (北京时间)
    - 当您推送代码到 main 分支时运行
    - 允许手动触发
 

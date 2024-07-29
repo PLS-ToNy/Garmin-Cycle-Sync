@@ -33,7 +33,7 @@ jobs:
       
       - name: Download FIT files from Garmin
         run: |
-          python garmin_downloader.py ${{ secrets.GARMIN_EMAIL }} ${{ secrets.GARMIN_PASSWORD }}
+          python garmin_downloader.py ${{ secrets.GARMIN_EMAIL }} ${{ secrets.GARMIN_PASSWORD }} ${{ secrets.GIANT_DOMAIN_LIMIT }}
 
       - name: Upload FIT files to ${{ matrix.platform }}
         run: |

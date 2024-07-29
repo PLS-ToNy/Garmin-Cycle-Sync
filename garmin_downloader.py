@@ -7,7 +7,7 @@ import time
 # Garmin配置
 GARMIN_DOMAIN = "garmin.cn"
 ACTIVITY_TYPE = "cycling"
-ACTIVITY_LIMIT = ${{ secrets.GIANT_DOMAIN_LIMIT }}
+ACTIVITY_LIMIT = 5
 ACTIVITY_START = 0
 EXCLUDE_CHILDREN = False
 
@@ -15,7 +15,7 @@ EXCLUDE_CHILDREN = False
 FIT_OUT = "FIT_OUT"
 
 
-def download_from_garmin(username, password):
+def download_from_garmin(username, password, limit):
     fit_files = []
 
     if not os.path.exists(FIT_OUT):
@@ -27,7 +27,7 @@ def download_from_garmin(username, password):
         f"/activitylist-service/activities/search/activities",
         params={
             "activityType": ACTIVITY_TYPE,
-            "limit": ACTIVITY_LIMIT,
+            "limit": limit,
             "start": ACTIVITY_START,
             "excludeChildren": EXCLUDE_CHILDREN,
         },
@@ -61,9 +61,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("email", nargs="?", help="input garmin email")
     parser.add_argument("password", nargs="?", help="input giant password")
+    parser.add_argument("limit", nargs="?", help="input giant limit")
     options = parser.parse_args()
 
     email = options.email
     password = options.password
+    limit = options.limit
 
-    download_from_garmin(email, password)
+    download_from_garmin(email, password,limit)

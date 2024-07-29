@@ -7,7 +7,7 @@ import time
 # Garmin配置
 GARMIN_DOMAIN = "garmin.cn"
 ACTIVITY_TYPE = "cycling"
-ACTIVITY_LIMIT = 100
+ACTIVITY_LIMIT = ${{ secrets.GIANT_DOMAIN_LIMIT }}
 ACTIVITY_START = 0
 EXCLUDE_CHILDREN = False
 

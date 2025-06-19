@@ -14,7 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [giant, onelap, igp, xingzhe]
+        platform: [giant]
+        # , onelap, igp, xingzhe
     steps:
       - name: Checkout
         uses: actions/checkout@v4

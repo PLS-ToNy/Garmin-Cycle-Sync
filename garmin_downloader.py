@@ -37,19 +37,18 @@ def download_from_garmin(username, password):
         activity_name = (
             str(activity["startTimeLocal"]) + " " + str(activity["activityName"])
         )
-        print("下载佳明记录")
-        print(f"下载佳明记录{activity_name}")
+        print("下载佳明记录-0")
         res = garth.download(f"/download-service/files/activity/{activity_id}")
-
+        print("下载佳明记录-1")
         zip_file_path = os.path.join(FIT_OUT, f"{activity_id}.zip")
         with open(zip_file_path, "wb") as f:
             f.write(res)
-
+        print("下载佳明记录-2")
         # 解压zip文件到FIT_OUT文件夹
         with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
             zip_ref.extractall(FIT_OUT)
         os.remove(zip_file_path)
-
+        print("下载佳明记录-3")
         # 重命名文件
         old_file_name = os.path.join(FIT_OUT, f"{activity_id}_ACTIVITY.fit")
         new_file_name = os.path.join(FIT_OUT, f"{activity_name}.fit")

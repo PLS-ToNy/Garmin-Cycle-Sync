@@ -21,6 +21,7 @@ def download_from_garmin(username, password):
 
     garth.configure(domain=GARMIN_DOMAIN)
     garth.login(username, password)
+    print("登录佳明成功")
     activities = garth.connectapi(
         f"/activitylist-service/activities/search/activities",
         params={
@@ -36,6 +37,7 @@ def download_from_garmin(username, password):
         activity_name = (
             str(activity["startTimeLocal"]) + " " + str(activity["activityName"])
         )
+        print(f"下载佳明记录{activity_name}")
         res = garth.download(f"/download-service/files/activity/{activity_id}")
 
         zip_file_path = os.path.join(FIT_OUT, f"{activity_id}.zip")

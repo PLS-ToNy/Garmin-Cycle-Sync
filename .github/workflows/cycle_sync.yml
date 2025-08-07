@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [giant, onelap, igp, xingzhe]
+        platform: [giant]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,6 +30,16 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          
+      - name: Update CA certificates  # ✅ 安装系统证书并升级 Python 证书库
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ca-certificates
+          pip install --upgrade certifi
+
+      - name: Set system CA path for requests  # ✅ 设置环境变量强制 requests 用系统证书
+        run: |
+          echo "REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt" >> $GITHUB_ENV
       
       - name: Download FIT files from Garmin
         run: |

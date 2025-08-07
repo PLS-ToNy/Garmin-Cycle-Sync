@@ -31,7 +31,7 @@ def download_from_garmin(username, password):
             "excludeChildren": EXCLUDE_CHILDREN,
         },
     )
-    print("下载佳明成功")
+    print(f"下载佳明成功{activities}")
     for activity in activities:
         activity_id = str(activity["activityId"])
         activity_name = (

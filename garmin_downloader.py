@@ -31,12 +31,13 @@ def download_from_garmin(username, password):
             "excludeChildren": EXCLUDE_CHILDREN,
         },
     )
-
+    print("下载佳明成功")
     for activity in activities:
         activity_id = str(activity["activityId"])
         activity_name = (
             str(activity["startTimeLocal"]) + " " + str(activity["activityName"])
         )
+        print("下载佳明记录")
         print(f"下载佳明记录{activity_name}")
         res = garth.download(f"/download-service/files/activity/{activity_id}")
 
